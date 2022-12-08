@@ -1,308 +1,141 @@
-require: rubocop-rails
-
 AllCops:
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.1.3
   SuggestExtensions: false
   NewCops: enable
   Exclude:
     - 'bin/*'
-    - 'config/**/*'
-    - 'config.ru'
-    - 'db/**/*'
-    - 'vendor/**/*'
-    - 'tmp/**/*'
-
-Rails:
-  Enabled: true
-  Exclude:
-    - 'config/initializers/*'
-
-# Nicer indentation requirements
-# https://rubocop.readthedocs.io/en/latest/cops_layout/#layoutalignarguments
-#
 Layout/ArgumentAlignment:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
-
-# Don't be picky about paren alignment
-#
 Layout/ClosingParenthesisIndentation:
   Enabled: false
-
-# It's ok to have an empty line at the top of a class, module, or block
-#
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
-
-# https://docs.rubocop.org/en/latest/cops_layout/#layoutemptylinesaroundattributeaccessor
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
-
-# Let hash arguments have sane indendation rules
-#
 Layout/FirstHashElementIndentation:
   Enabled: true
   EnforcedStyle: consistent
-
-# The standard 80 character length can be difficult in Ruby at times
-#
 Layout/LineLength:
   Max: 120
-
-# Don't try to align parens in a multiline method call
-#
 Layout/MultilineMethodCallBraceLayout:
   Enabled: false
-
-# Don't be picky about parameter alignment
-#
 Layout/ParameterAlignment:
   Enabled: false
   EnforcedStyle: with_fixed_indentation
-
-# https://docs.rubocop.org/en/latest/cops_layout/#layoutspacearoundmethodcalloperator
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
-
-# https://rubocop.readthedocs.io/en/latest/cops_lint/#lintdeprecatedopensslconstant
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
-
-# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/RaiseException
-#
 Lint/RaiseException:
   Enabled: true
-
-# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/StructNewOverride
-#
 Lint/StructNewOverride:
   Enabled: true
-
-# Don't enforce block length in specs or other files where blocks tend to be long
-#
 Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
     - '**/*.rake'
     - 'spec/**/*.rb'
     - '*.gemspec'
-
-# Enable 20 lines in a method instead of the default 10
-#
 Metrics/MethodLength:
   Enabled: true
   Max: 20
   Exclude:
     - '**/*.rake'
-
-# Enable longer modules in spec files
-#
 Metrics/ModuleLength:
   Enabled: true
   Exclude:
     - 'spec/**/*.rb'
-
-# Enable a little more complexity than the standard 15
-#
 Metrics/AbcSize:
-  Max: 23
-
-# Don't complain about long classes just yet
-#
+  Max: 50
 Metrics/ClassLength:
   Enabled: false
-
-# Admin mutations sometimes require many parameters
-#
 Metrics/ParameterLists:
   Enabled: true
-
-# Allow using Foo::Bar style class declaration style
-#
 Style/ClassAndModuleChildren:
   Enabled: false
-
-# I agree that documentation is good, but it should not be required in all cases
-#
 Style/Documentation:
   Enabled: false
-
-# Dont require empty methods are on a single line
-#
 Style/EmptyMethod:
   Enabled: false
-
-# https://docs.rubocop.org/en/latest/cops_style/#styleexponentialnotation
 Style/ExponentialNotation:
   Enabled: true
-
-# While this is intended to aid upgrading, adding frozen_string_literal: true to the top of
-# every file is awful
-#
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-# Don't enforce a guard clause on short methods
-#
 Style/GuardClause:
   MinBodyLength: 3
-
-# https://rubocop.readthedocs.io/en/latest/cops_style/#stylehasheachmethods
 Style/HashEachMethods:
   Enabled: true
-
-# https://rubocop.readthedocs.io/en/latest/cops_style/#stylehashtransformkeys
 Style/HashTransformKeys:
   Enabled: true
-
-# https://rubocop.readthedocs.io/en/latest/cops_style/#stylehashtransformvalues
 Style/HashTransformValues:
   Enabled: true
-
-# Explicit returns are fine
-#
 Style/RedundantReturn:
   Enabled: false
-
-# https://github.com/rubocop-hq/rubocop/pull/7921
 Style/SlicingWithRange:
   Enabled: true
-
-# Allow normal arrays of symbols
-#
 Style/SymbolArray:
   Enabled: false
-
-# Allow normal word arrays
-#
 Style/WordArray:
   Enabled: false
-
-
 Lint/DuplicateElsifCondition:
   Enabled: true
-
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
-
 Style/AccessorGrouping:
   Enabled: true
-
 Style/ArrayCoercion:
   Enabled: true
-
 Style/BisectedAttrAccessor:
   Enabled: true
-
 Style/CaseLikeIf:
   Enabled: true
-
 Style/HashAsLastArrayItem:
   Enabled: true
-
 Style/HashLikeCase:
   Enabled: true
-
 Style/RedundantAssignment:
   Enabled: true
-
 Style/RedundantFetchBlock:
   Enabled: true
-
 Style/RedundantFileExtensionInRequire:
   Enabled: true
-
 Style/RedundantRegexpCharacterClass:
   Enabled: true
-
 Style/RedundantRegexpEscape:
   Enabled: true
-
-Rails/ActiveRecordCallbacksOrder:
-  Enabled: true
-
-Rails/FindById:
-  Enabled: true
-
-Rails/Inquiry:
-  Enabled: true
-
-Rails/MailerName:
-  Enabled: true
-
-Rails/MatchRoute:
-  Enabled: true
-
-Rails/NegateInclude:
-  Enabled: true
-
-Rails/Pluck:
-  Enabled: true
-
-Rails/PluckInWhere:
-  Enabled: true
-
-Rails/RenderInline:
-  Enabled: true
-
-Rails/RenderPlainText:
-  Enabled: true
-
-Rails/ShortI18n:
-  Enabled: true
-
-Rails/WhereExists:
-  Enabled: true
-
 Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
-
 Lint/DuplicateRescueException:
   Enabled: true
-
 Lint/EmptyConditionalBody:
   Enabled: true
-
 Lint/FloatComparison:
   Enabled: true
-
 Lint/MissingSuper:
   Enabled: true
-  Exclude:
-    - 'app/policies/*'
-    - 'app/operations/*'
-
 Lint/OutOfRangeRegexpRef:
   Enabled: true
-
 Lint/SelfAssignment:
   Enabled: true
-
 Lint/TopLevelReturnWithArgument:
   Enabled: true
-
 Lint/UnreachableLoop:
   Enabled: true
-
 Style/ExplicitBlockArgument:
   Enabled: true
-
 Style/GlobalStdStream:
   Enabled: true
-
 Style/OptionalBooleanParameter:
   Enabled: true
-
 Style/SingleArgumentDig:
   Enabled: true
-
 Style/StringConcatenation:
   Enabled: true
-
 Layout/BeginEndAlignment: # (new in 0.91)
   Enabled: true
 Lint/ConstantDefinitionInBlock: # (new in 0.91)
@@ -332,12 +165,6 @@ Style/KeywordParametersOrder: # (new in 0.90)
 Style/RedundantSelfAssignment: # (new in 0.90)
   Enabled: true
 Style/SoleNestedConditional: # (new in 0.89)
-  Enabled: true
-Rails/AfterCommitOverride: # (new in 2.8)
-  Enabled: true
-Rails/SquishedSQLHeredocs: # (new in 2.8)
-  Enabled: true
-Rails/WhereNot: # (new in 2.8)
   Enabled: true
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
@@ -383,10 +210,6 @@ Style/RedundantArgument: # (new in 1.4)
   Enabled: true
 Style/SwapValues: # (new in 1.1)
   Enabled: true
-Rails/AttributeDefaultBlockValue: # (new in 2.9)
-  Enabled: true
-Rails/WhereEquals: # (new in 2.9)
-  Enabled: true
 Lint/NumberedParameterAssignment: # (new in 1.9)
   Enabled: true
 Lint/OrAssignmentToConstant: # (new in 1.9)
@@ -431,20 +254,6 @@ Style/SelectByRegexp: # new in 1.22
   Enabled: true
 Style/StringChars: # new in 1.12
   Enabled: true
-Rails/AddColumnIndex: # new in 2.11
-  Enabled: true
-Rails/EagerEvaluationLogMessage: # new in 2.11
-  Enabled: true
-Rails/ExpandedDateRange: # new in 2.11
-  Enabled: true
-Rails/I18nLocaleAssignment: # new in 2.11
-  Enabled: true
-Rails/RedundantTravelBack: # new in 2.12
-  Enabled: true
-Rails/TimeZoneAssignment: # new in 2.10
-  Enabled: true
-Rails/UnusedIgnoredColumns: # new in 2.11
-  Enabled: true
 Gemspec/RequireMFA: # new in 1.23
   Enabled: true
 Lint/UselessRuby2Keywords: # new in 1.23
@@ -461,13 +270,5 @@ Style/NestedFileDirname: # new in 1.26
   Enabled: true
 Style/OpenStructUse: # new in 1.23
   Enabled: false
-Rails/CompactBlank: # new in 2.13
-  Enabled: true
-Rails/DurationArithmetic: # new in 2.13
-  Enabled: true
-Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
-  Enabled: false
-Rails/RootJoinChain: # new in 2.13
-  Enabled: true
-Rails/I18nLocaleTexts:
+Style/NumericLiterals:
   Enabled: false

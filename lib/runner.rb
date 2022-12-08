@@ -1,0 +1,37 @@
+module Aoc
+  class Runner
+
+    def call(number)
+      day = get_day_class(number)
+      return unless day
+
+      input_path = File.join(APP_ROOT, 'inputs', "#{number.to_s.rjust(2, '0')}.txt")
+      input_data = File.exist?(input_path) ? File.read(input_path) : nil
+
+      puts <<~HERE
+        Day #{number} #{emoji_for(number)}#{' '}
+        - 1: #{day.part1(input_data)}
+        - 2: #{day.part2(input_data)}
+      HERE
+    end
+
+    private
+
+    def get_day_class(number)
+      Object.const_get("Day#{number}").new
+    rescue NameError
+      # puts "Day #{number} not implemented"
+    end
+
+    def emoji_for(number)
+      case number % 3
+      when 0
+        '🎄'
+      when 1
+        '❄️'
+      when 2
+        '⭐'
+      end
+    end
+  end
+end
