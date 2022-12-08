@@ -1,22 +1,11 @@
 class Day07
-  File = Struct.new(:name, :file_size)
-
-  Dir = Struct.new(:name, :parent, :dirs, :files) do
-    def total_size
-      files.map(&:file_size).sum + dirs.map(&:total_size).sum
-    end
-
-    def flatten
-      [dirs.map(&:flatten)].flatten + [self]
-    end
-  end
 
   def part1(input)
     root = parse(input)
 
     root.flatten.select do |dir|
       dir.total_size <= 100_000
-    end.map(&:total_size).sum
+    end.sum(&:total_size)
   end
 
   def part2(input)
@@ -26,14 +15,24 @@ class Day07
     root.flatten.sort_by(&:total_size).each do |dir|
       return dir.total_size if dir.total_size >= space_required
     end
-
-    0
   end
 
   private
 
+  FileNode = Struct.new(:name, :file_size)
+
+  DirNode = Struct.new(:name, :parent, :dirs, :files) do
+    def total_size
+      files.map(&:file_size).sum + dirs.map(&:total_size).sum
+    end
+
+    def flatten
+      [dirs.map(&:flatten)].flatten + [self]
+    end
+  end
+
   def parse(input)
-    root = Dir.new('/', nil, [], [])
+    root = DirNode.new('/', nil, [], [])
     current = root
 
     input.split("\n")[1..].each do |line|
@@ -46,11 +45,11 @@ class Day07
 
       elsif line.start_with? 'dir'
         dir_name = line[4..]
-        current.dirs.push(Dir.new(dir_name, current, [], []))
+        current.dirs.push(DirNode.new(dir_name, current, [], []))
 
       elsif line[0].match(/\d/)
         split = line.split
-        current.files.push(File.new(split[1], split[0].to_i))
+        current.files.push(FileNode.new(split[1], split[0].to_i))
       end
     end
 
