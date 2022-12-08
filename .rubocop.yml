@@ -7,6 +7,12 @@ AllCops:
 Layout/ArgumentAlignment:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max: 50
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 50
 Layout/ClosingParenthesisIndentation:
   Enabled: false
 Layout/EmptyLinesAroundClassBody:
@@ -43,7 +49,7 @@ Metrics/BlockLength:
     - '*.gemspec'
 Metrics/MethodLength:
   Enabled: true
-  Max: 20
+  Max: 100
   Exclude:
     - '**/*.rake'
 Metrics/ModuleLength:
@@ -51,7 +57,7 @@ Metrics/ModuleLength:
   Exclude:
     - 'spec/**/*.rb'
 Metrics/AbcSize:
-  Max: 50
+  Max: 100
 Metrics/ClassLength:
   Enabled: false
 Metrics/ParameterLists:

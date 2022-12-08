@@ -34,7 +34,7 @@ namespace :scaffold do
         File.read(File.join(APP_ROOT, 'template', 'test')).gsub(marker, number)
       )
       File.write(File.join(APP_ROOT, 'examples', "#{number}.txt"), '')
-      
+
     end
   end
 end
@@ -43,7 +43,7 @@ namespace :download do
 
   def download_input(number)
     session_path = File.join(APP_ROOT, '.session')
-    return '' unless File.exists?(session_path)
+    return '' unless File.exist?(session_path)
 
     puts "⬇️ Download day #{number} input"
 
@@ -56,7 +56,7 @@ namespace :download do
       response.body
     else
       puts "💥 Download failed - #{response.message}"
-    end    
+    end
   end
 
   (1..25).each do |i|

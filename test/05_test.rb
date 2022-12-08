@@ -3,7 +3,7 @@ require_relative '../app'
 
 class TestDay05 < Minitest::Test
   def setup
-    @data = File.read(File.join(APP_ROOT, 'examples', '05.txt'))
+    @data = File.read(File.join(APP_ROOT, 'examples', '05.txt')).strip
     @day = Day05.new
   end
 
