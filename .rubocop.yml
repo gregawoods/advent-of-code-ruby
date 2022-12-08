@@ -4,6 +4,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'bin/*'
+    - 'vendor/**/*'
 Layout/ArgumentAlignment:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
