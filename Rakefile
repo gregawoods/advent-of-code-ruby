@@ -26,7 +26,7 @@ namespace :scaffold do
       marker = '{DAY_NUMBER}'
 
       ruby_file = File.join(APP_ROOT, 'lib', 'days', "#{number}.rb")
-      raise '⛔ Stopping: Already exists' if File.exists?(ruby_file)
+      # raise '⛔ Stopping: Already exists' if File.exists?(ruby_file)
 
       File.write(ruby_file, File.read(File.join(APP_ROOT, 'template', 'day')).sub(marker, number))
       File.write(

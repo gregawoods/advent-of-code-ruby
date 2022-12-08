@@ -1,4 +1,4 @@
-class Day02
+class Day03
 
   def part1(input)
     'TODO'
