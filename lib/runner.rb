@@ -2,6 +2,7 @@ module Aoc
   class Runner
 
     def call(number)
+
       day = get_day_class(number)
       return unless day
 
@@ -18,7 +19,7 @@ module Aoc
     private
 
     def get_day_class(number)
-      Object.const_get("Day#{number}").new
+      Object.const_get("Day#{number.to_s.rjust(2, '0')}").new
     rescue NameError
       # puts "Day #{number} not implemented"
     end

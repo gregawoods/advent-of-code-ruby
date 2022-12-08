@@ -1,4 +1,4 @@
-class Day7
+class Day07
   File = Struct.new(:name, :file_size)
 
   Dir = Struct.new(:name, :parent, :dirs, :files) do
