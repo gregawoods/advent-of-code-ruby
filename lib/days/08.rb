@@ -1,14 +1,8 @@
 class Day08
 
   def part1(input)
-    forest = []
-
-    input.split("\n").each do |line|
-      forest << []
-
-      line.each_char do |char|
-        forest.last << char.to_i
-      end
+    forest = input.split("\n").map do |line|
+      line.each_char.map(&:to_i)
     end
 
     count = 0
@@ -48,14 +42,8 @@ class Day08
   end
 
   def part2(input)
-    forest = []
-
-    input.split("\n").each do |line|
-      forest << []
-
-      line.each_char do |char|
-        forest.last << char.to_i
-      end
+    forest = input.split("\n").map do |line|
+      line.each_char.map(&:to_i)
     end
 
     best = 0

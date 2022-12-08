@@ -6,7 +6,9 @@ module Aoc
       return unless day
 
       input_path = File.join(APP_ROOT, 'inputs', "#{number.to_s.rjust(2, '0')}.txt")
-      input_data = File.exist?(input_path) ? File.read(input_path).strip : nil
+      raise 'Input does not exist' unless File.exist?(input_path)
+
+      input_data = File.read(input_path).rstrip
 
       puts <<~HERE
         Day #{number} #{emoji_for(number)}#{' '}
